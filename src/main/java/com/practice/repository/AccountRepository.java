@@ -2,16 +2,15 @@ package com.practice.repository;
 
 import java.util.Optional;
 
+import com.practice.entity.FavouriteAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import com.practice.entity.Account;
-
 @Repository
-public interface AccountRepository extends JpaRepository<Account,Integer>{
+public interface AccountRepository extends JpaRepository<FavouriteAccount,Integer>{
 
-	Optional<Account> findByIbanNumber(int ibanNumber);
+	Optional<FavouriteAccount> findByIbanNumber(int ibanNumber);
 
-	ResponseEntity<Object> getById(Account account);
+	ResponseEntity<Object> getById(FavouriteAccount favouriteAccount);
 }

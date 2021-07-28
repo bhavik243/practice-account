@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class FavouriteAccount {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

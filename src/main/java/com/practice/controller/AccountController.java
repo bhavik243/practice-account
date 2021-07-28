@@ -2,6 +2,7 @@ package com.practice.controller;
 
 import java.util.List;
 
+import com.practice.dto.AccountRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.practice.entity.Account;
+import com.practice.entity.FavouriteAccount;
 import com.practice.service.impl.AccountService;
 
 import io.swagger.annotations.ApiOperation;
@@ -33,10 +34,8 @@ public class AccountController {
 			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 
-	public ResponseEntity<Object> addNewAccount(@RequestBody Account account)
-			 {
-
-		return accountService.addNewAccount(account);
+	public ResponseEntity<Object> addNewAccount(@RequestBody AccountRequest accountRequest) {
+		return accountService.addNewAccount(accountRequest);
 	}
 	
 	@GetMapping(path = "/{ibanNumber}")
@@ -46,18 +45,17 @@ public class AccountController {
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 
 	public ResponseEntity<Object> getByIbanNumber(@PathVariable int ibanNumber) {
-
 		return accountService.findByIbanNumber(ibanNumber);
 	}
 	@PutMapping(path = "/accountdetails")
-	@ApiOperation(value = "Updating account details", notes = "updating details.")
+	@ApiOperation(value = "Updating favouriteAccount details", notes = "updating details.")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Object.class),
 			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 
-	public ResponseEntity<Object> updateAccount(@RequestBody Account account){
+	public ResponseEntity<Object> updateAccount(@RequestBody FavouriteAccount favouriteAccount){
             
-          return accountService.updateAccount(account);
+          return accountService.updateAccount(favouriteAccount);
 
 }
 	@GetMapping(path = "/Accounts/{ibanNumber}")
@@ -66,7 +64,7 @@ public class AccountController {
 			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 
-	public List<Account> deleteAccountsByIbanNumber(@PathVariable Integer IbanNumber) {
+	public List<FavouriteAccount> deleteAccountsByIbanNumber(@PathVariable Integer IbanNumber) {
 
 		return accountService.deleteAccountsByIbanNumber(IbanNumber);
 	}

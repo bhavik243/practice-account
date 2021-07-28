@@ -1,2 +1,2 @@
-# practice-account
-practice account 
+# practice-favouriteAccount
+practice favouriteAccount 

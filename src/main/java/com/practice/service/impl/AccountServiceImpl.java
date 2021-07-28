@@ -3,13 +3,14 @@ package com.practice.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.practice.dto.AccountRequest;
 import com.practice.entity.Bank;
+import com.practice.entity.FavouriteAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.practice.entity.Account;
 import com.practice.repository.AccountRepository;
 
 @Service
@@ -18,15 +19,18 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	AccountRepository accountRepository;
 
-	public ResponseEntity<Object> addNewAccount(Account account) {
+	public ResponseEntity<Object> addNewAccount(AccountRequest accountRequest) {
 
-		accountRepository.save(account);
+		FavouriteAccount favouriteAccount = new FavouriteAccount();
+		favouriteAccount.setAccountName(accountRequest.getName());
 
-		return ResponseEntity.status(HttpStatus.CREATED).body("New Account created successfully.");
+		accountRepository.save(favouriteAccount);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body("New FavouriteAccount created successfully.");
 	}
 
 	public ResponseEntity<Object> findByIbanNumber(int ibanNumber) {
-		Optional<Account> accountEntityOpt = accountRepository.findByIbanNumber(ibanNumber);
+		Optional<FavouriteAccount> accountEntityOpt = accountRepository.findByIbanNumber(ibanNumber);
 
 		if (accountEntityOpt.isPresent()) {
 			return ResponseEntity.status(HttpStatus.FOUND).body("Iban Number" + ibanNumber + " found.");
@@ -36,10 +40,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	/*
-	 * @Override public ResponseEntity<Object> updateAccount(Account account) {
-	 * Optional<Account> favourite = accountRepository.findById(account.getId());
+	 * @Override public ResponseEntity<Object> updateAccount(FavouriteAccount account) {
+	 * Optional<FavouriteAccount> favourite = accountRepository.findById(account.getId());
 	 * 
-	 * if (favourite.isPresent()) { Account account= account.getAccountName();
+	 * if (favourite.isPresent()) { FavouriteAccount account= account.getAccountName();
 	 * account.setAccountName(account.getAccountName());
 	 * 
 	 * account = accountRepository.save(account);
@@ -51,25 +55,25 @@ public class AccountServiceImpl implements AccountService {
 	 * }
 	 */
 
-	public List<Account> findAccountsByIbanNumber(Integer ibanNumber) {
+	public List<FavouriteAccount> findAccountsByIbanNumber(Integer ibanNumber) {
 		 accountRepository.deleteById(ibanNumber);;
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Object> accountDetails(Account account, int ibanNumber) {
+	public ResponseEntity<Object> accountDetails(FavouriteAccount favouriteAccount, int ibanNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Object> updateAccount(Account account) {
+	public ResponseEntity<Object> updateAccount(FavouriteAccount favouriteAccount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Account> deleteAccountsByIbanNumber(Integer ibanNumber) {
+	public List<FavouriteAccount> deleteAccountsByIbanNumber(Integer ibanNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -80,16 +84,16 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	/*
-	 * @Override public List<Account> deleteAccountsByIbanNumber(Integer ibanNumber)
+	 * @Override public List<FavouriteAccount> deleteAccountsByIbanNumber(Integer ibanNumber)
 	 * {
 	 * 
 	 * return null; }
 	 */
 	/*
-	 * @Override public ResponseEntity<Object> accountDetails(Account account, int
+	 * @Override public ResponseEntity<Object> accountDetails(FavouriteAccount account, int
 	 * ibanNumber) { // TODO Auto-generated method stub return null; }
 	 * 
-	 * @Override public ResponseEntity<Object> updateAccount(Account account) { //
+	 * @Override public ResponseEntity<Object> updateAccount(FavouriteAccount account) { //
 	 * TODO Auto-generated method stub return null; }
 	 */
 
