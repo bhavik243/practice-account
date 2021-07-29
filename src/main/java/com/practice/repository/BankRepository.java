@@ -1,14 +1,15 @@
 package com.practice.repository;
 
-import com.practice.entity.FavouriteAccount;
 import com.practice.entity.Bank;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface BankRepository extends JpaRepository<Bank,Integer>{
 
-	ResponseEntity<Object> getById(FavouriteAccount favouriteAccount);
+	@Override
+	List<Bank> findAllById(Iterable<Integer> iterable);
 
 }

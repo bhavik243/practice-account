@@ -5,16 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankResponseDto {
+public class BankResponseDto  {
+	private List<BankDetailsDto> bankDetails = new ArrayList<>();
 
-	private int id;
-	private String name;
-	private int accountNumber;
-	private int bankName;
-	private long count;
-
+	public BankDetailsDto addBankDetails(BankDetailsDto bankDetailsDto) {
+		this.bankDetails.add(bankDetailsDto);
+		return bankDetailsDto;
+	}
 }

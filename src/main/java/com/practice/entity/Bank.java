@@ -21,7 +21,7 @@ public class Bank {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@Column(name = "bank_name")
+	@Column(name = "name")
 	private String bankName;
 	@Column(name = "is_deleted")
 	private boolean isDeleted;

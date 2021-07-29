@@ -1,4 +1,4 @@
-package com.practice.service.impl;
+package com.practice.service;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import com.practice.entity.Bank;
 
 public interface AccountService {
-
 
 	public ResponseEntity<Object> addNewAccount(AccountRequest account);
 
