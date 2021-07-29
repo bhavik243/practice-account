@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BankCodeRequestDto {
-    @NotNull(message = "iBan values cannot be empty")
-    private List<Integer> ibans;
+    @NotNull(message = "bankCode values cannot be empty")
+    private List<Integer> bankCodes;
 
 }

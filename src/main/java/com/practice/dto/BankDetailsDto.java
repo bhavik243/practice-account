@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BankDetailsDto {
-    private int iban;
+    private int bankCode;
     private String bankName;
 }

@@ -4,10 +4,8 @@ import com.practice.constants.CommonConstants;
 import com.practice.dto.BankDetailsDto;
 import com.practice.dto.BankResponseDto;
 import com.practice.entity.Bank;
-import com.practice.entity.FavouriteAccount;
 import com.practice.repository.BankRepository;
 import com.practice.response.DataResponse;
-import com.practice.response.Response;
 import com.practice.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -27,14 +25,14 @@ public class BankServiceImpl implements BankService {
     MessageSource messageSource;
 
     @Override
-    public DataResponse getBankNames(List<Integer> ibans) {
+    public DataResponse getBankNames(List<Integer> bankCodes) {
 
-        List<Bank> banks = bankRepository.findAllById(ibans);
+        List<Bank> banks = bankRepository.findAllById(bankCodes);
 
         BankResponseDto responseDTO = new BankResponseDto();
         for(Bank bank: banks) {
             BankDetailsDto bankDetailsDto = responseDTO.addBankDetails(new BankDetailsDto());
-            bankDetailsDto.setIban(bank.getId());
+            bankDetailsDto.setBankCode(bank.getId());
             bankDetailsDto.setBankName(bank.getBankName());
         }
         return new DataResponse(HttpStatus.OK.value(),

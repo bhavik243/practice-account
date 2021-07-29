@@ -36,7 +36,7 @@ public class BankController extends BaseController {
     @ApiOperation(value = "Get bank names by bankCode", notes = "Get bank names by bankCode")
     public ResponseEntity<Object> getBankDetails(@Valid @RequestBody BankCodeRequestDto bankCodeRequest) {
         logger.debug("Get bank details called at BankController");
-        return ResponseEntity.ok(bankService.getBankNames(bankCodeRequest.getIbans()));
+        return ResponseEntity.ok(bankService.getBankNames(bankCodeRequest.getBankCodes()));
     }
 
 }
