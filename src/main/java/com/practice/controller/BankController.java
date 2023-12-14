@@ -1,6 +1,5 @@
 package com.practice.controller;
 
-
 import com.practice.dto.BankCodeRequestDto;
 import com.practice.service.BankService;
 import io.swagger.annotations.ApiOperation;
@@ -14,10 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
-@RequestMapping(value = "/bank")
+@RequestMapping(value = "/banks")
 @ApiResponses({ @ApiResponse(code = 200, message = "Successful"),
         @ApiResponse(code = 204, message = "Successful, no content."),
         @ApiResponse(code = 400, message = "Bad request. Validation failure."),
@@ -32,7 +30,7 @@ public class BankController extends BaseController {
     @Autowired
     private BankService bankService;
 
-    @PostMapping(value = "/names", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Get bank names by bankCode", notes = "Get bank names by bankCode")
     public ResponseEntity<Object> getBankDetails(@Valid @RequestBody BankCodeRequestDto bankCodeRequest) {
         logger.debug("Get bank details called at BankController");

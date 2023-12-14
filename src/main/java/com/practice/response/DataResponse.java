@@ -19,12 +19,6 @@ public class DataResponse extends Response {
 	}
 
 	public DataResponse() {
-
-	}
-
-	public DataResponse(HttpStatus httpstatuscode, int code, String message, Map<String, Object> data) {
-		super(httpstatuscode,code, message);
-		this.data = data;
 	}
 
 	public Object getData() {

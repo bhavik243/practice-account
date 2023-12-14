@@ -28,7 +28,7 @@ public class AccountController {
 	@Autowired
 	AccountService accountService;
 	
-	@PostMapping(path = "/add/{Number}")
+	@PostMapping(path = "/addAccount")
 	@ApiOperation(value = "Add a new account", notes = "Create an new account for customer.")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
 			@ApiResponse(code = 400, message = "Bad Request"),
@@ -48,7 +48,7 @@ public class AccountController {
 		return accountService.findByIbanNumber(ibanNumber);
 	}
 
-	@PutMapping(path = "/accountdetails")
+	@PutMapping(path = "/updateAccounnt/{ibanNumber}")
 	@ApiOperation(value = "Updating favouriteAccount details", notes = "updating details.")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Object.class),
 			@ApiResponse(code = 400, message = "Bad Request"),
@@ -58,14 +58,12 @@ public class AccountController {
           return accountService.updateAccount(favouriteAccount);
 	}
 
-	@GetMapping(path = "/Accounts/{ibanNumber}")
-	@ApiOperation(value = "Get all accounts", notes = "Get all Accounts by iban number")
+	@GetMapping(path = "/{ibanNumber}")
+	@ApiOperation(value = "Delete an account", notes = "Delete an account by iban number")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
 			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
-
 	public List<FavouriteAccount> deleteAccountsByIbanNumber(@PathVariable Integer IbanNumber) {
-
 		return accountService.deleteAccountsByIbanNumber(IbanNumber);
 	}
 	

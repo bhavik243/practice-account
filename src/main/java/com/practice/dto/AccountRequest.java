@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
@@ -16,7 +16,11 @@ import javax.validation.Valid;
 public class AccountRequest {
 
     private Integer id;
+
     private String name;
+
+    @NotNull()
     private String accountNumber;
+
     private String bankName;
 }
