@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-
 public class BaseController extends BaseAbstract implements MessageSourceAware {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
