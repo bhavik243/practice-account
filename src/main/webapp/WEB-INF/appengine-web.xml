@@ -3,9 +3,9 @@
   <runtime>java8</runtime>
 
   <env-variables>
-    <env-var name="PUBSUB_TOPIC" value="your-topic" />
-    <env-var name="PUBSUB_VERIFICATION_TOKEN" value="your-verification-token" />
-  </env-variables>
+    <env-var name="PUBSUB_TOPIC" value="topic-test-1" />
+    <env-var name="PUBSUB_VERIFICATION_TOKEN" value="token-test-1" />
+  </env-variables>f
 
 
 
