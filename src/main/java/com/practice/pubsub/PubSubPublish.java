@@ -49,7 +49,12 @@ public class PubSubPublish extends HttpServlet {
         publisher = Publisher.newBuilder(topicName).build();
       }
       // construct a pubsub message from the payload
-      final String payload = req.getParameter("payload");
+      String payload = req.getParameter("payload");
+
+      if(payload.isEmpty()) {
+        payload = "{ \"id\" : \"1\", \"name\" : \"Bhavik\"}";
+      }
+
       PubsubMessage pubsubMessage =
           PubsubMessage.newBuilder().setData(ByteString.copyFromUtf8(payload)).build();
 

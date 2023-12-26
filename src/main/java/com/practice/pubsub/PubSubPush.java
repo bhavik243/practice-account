@@ -29,7 +29,6 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.stream.Collectors;
 
-// [START gae_standard_pubsub_push]
 @WebServlet(value = "/pubsub/push")
 public class PubSubPush extends HttpServlet {
 
