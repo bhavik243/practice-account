@@ -19,12 +19,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<EmployeeDto> getAllEmployeeDetails() {
         List<Employee> employees = employeeRepository.findAll();
-
         return EmployeeConverter.convertToDtoList(employees);
     }
 
     @Override
     public EmployeeDto getEmployeeById(int id) {
-        return null;
+        Employee employee = employeeRepository.getById(id);
+        return EmployeeConverter.convertToDto(employee);
     }
 }

@@ -27,7 +27,7 @@ import javax.validation.Valid;
         @ApiResponse(code = 500, message = "Internal Server Error") })
 public class EmployeeController extends BaseController {
 
-    Logger logger = LoggerFactory.getLogger(BankController.class);
+    Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
     private EmployeeService employeeService;
